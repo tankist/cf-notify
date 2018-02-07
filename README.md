@@ -50,7 +50,7 @@ Where:
 Once setup is complete, all you need to do now is set the notification ARN when you update any Cloud Formation stack:
 
 ```sh
-SNS_ARN=`aws cloudformation describe-stacks --stack-name cf-notify-$CHANNEL | jq ".Stacks[].Outputs[].OutputValue"  | tr -d '"'`
+SNS_ARN=`aws cloudformation describe-stacks --stack-name cf-notify-$CHANNEL | jq ".Stacks[].Outputs[].OutputValue"  --raw-output`
 
 aws cloudformation [create-stack|update-stack|delete-stack] --notification-arns $SNS_ARN
 ```
